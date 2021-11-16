@@ -79,6 +79,9 @@ double SpeedLimiter::limit(double & v, double v0, double v1, double dt)
 {
   const double tmp = v;
 
+  if(abs(dt) > 1.0)
+    return v;
+
   limit_jerk(v, v0, v1, dt);
   limit_acceleration(v, v0, dt);
   limit_velocity(v);
